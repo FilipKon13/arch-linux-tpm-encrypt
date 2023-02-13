@@ -9,6 +9,7 @@ echo -e "127.0.0.1 localhost\n::1 localhost\n127.0.1.1 myhostname.localdomain my
 sed -i "s|^HOOKS=.*|HOOKS=(base systemd autodetect modconf kms keyboard sd-vconsole block tpm sd-encrypt lvm2 filesystems fsck)|g" /etc/mkinitcpio.conf
 mkinitcpio -p linux
 
+echo "Setup password for root"
 passwd
 pacman -S grub
 echo "GRUB_ENABLE_CRYPTODISK=y" >> /etc/default/grub

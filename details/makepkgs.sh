@@ -1,4 +1,4 @@
-cd /home/user/
+cd
 
 git clone https://aur.archlinux.org/trousers.git
 cd trousers

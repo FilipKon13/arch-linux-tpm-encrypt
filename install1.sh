@@ -5,6 +5,7 @@ sgdisk -n 2:0:+550MiB /dev/sda
 sgdisk -n 3:0:+550MiB /dev/sda
 sgdisk -n 4:0:0 /dev/sda
 
+echo "Creating LUKS container on /dev/sda4"
 cryptsetup luksFormat --type luks1 --use-random -S 1 -s 512 -h sha512 -i 5000 /dev/sda4
 
 cryptsetup open /dev/sda4 cryptlvm
@@ -36,4 +37,4 @@ pacstrap /mnt base linux linux-firmware mkinitcpio lvm2 vi dhcpcd wpa_supplicant
 
 genfstab -U /mnt >> /mnt/etc/fstab
 
-arch-chroot ./after_chroot.sh /mnt
+arch-chroot ./details/after_chroot.sh /mnt
